@@ -1,0 +1,56 @@
+body 
+{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+main 
+{
+    width: 290px;
+    height: 420px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#display 
+{
+    width: 90%;
+    height: 40px;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#obliczanie 
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.po4
+{
+    margin: 5px;
+}
+
+button 
+{
+    width: 65px;
+    height: 60px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    background: #e0e0e0;
+    border-radius: 5px;
+}
+
+button:hover 
+{
+    background: #d0d0d0;
+}
