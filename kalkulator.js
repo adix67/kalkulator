@@ -20,7 +20,7 @@ let lnaw = document.getElementById("lnaw");
 let koma = document.getElementById("koma");
 let pnaw = document.getElementById("pnaw");
 
-let c = document.getElementById("wyczysc");
+let ce = document.getElementById("wyczysc");
 let display = document.getElementById("display");
 
 let znaki = ["*", "/", "+", "%", "(", ")", "-"];
@@ -94,6 +94,16 @@ plus.addEventListener("click", function() {
     }
 });
 
+minus.addEventListener("click", function() {
+    if (display.value == "") {
+        display.value += "";
+    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "";
+    } else {
+        display.value += "-";
+    }
+});
+
 rowne.addEventListener("click", function() {
     if (znaki.includes(display.value.charAt(display.value.length - 1))) {
         display.value = display.value.slice(0, -1);
@@ -102,3 +112,14 @@ rowne.addEventListener("click", function() {
         display.value = eval(display.value);
     }
 });
+
+ce.addEventListener("click", function() {
+    display.value = display.value.slice(0, -1);
+});
+
+document.addEventListener("keydown", function(ev) {
+    if (ev.key == "Backspace") {
+        display.value = display.value.slice(0, -1);
+    }
+});
+
