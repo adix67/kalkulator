@@ -23,6 +23,9 @@ let pi = document.getElementById("pi");
 let c = document.getElementById("wyczysc");
 let display = document.getElementById("display");
 
+let znaki = ["*", "/", "+", "%", "π", "√", "-"];
+let kropka = ".";
+
 j.addEventListener("click", function() {
     display.value += 1;
 });
@@ -68,7 +71,6 @@ z.addEventListener("click", function() {
 });
 
 koma.addEventListener("click", function() {
-    let znaki = ["*", "/", "+", "%", "π", "√", "-"];
     let niedodawac = display.value.split(new RegExp(`[${znaki.join("")}]`)); //Rozdzielenie (split) wyrażenia na części po operatorach
     let dlugosc = niedodawac[niedodawac.length - 1];
     if (znaki.includes(display.value.charAt(display.value.length - 1))) {
@@ -79,5 +81,24 @@ koma.addEventListener("click", function() {
         display.value += "";
     } else {
         display.value += ".";
+    }
+});
+
+plus.addEventListener("click", function() {
+    if (display.value == "") {
+        display.value += "";
+    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1))) { //Sprawdzenie czy ostatnim znakiem nie jest kropka lub jeden z operatorów i innych tego typu
+        display.value += "";
+    } else {
+        display.value += "+";
+    }
+});
+
+rowne.addEventListener("click", function() {
+    if (znaki.includes(display.value.charAt(display.value.length - 1))) {
+        display.value = display.value.slice(0, -1);
+        display.value = eval(display.value);
+    } else {
+        display.value = eval(display.value);
     }
 });
