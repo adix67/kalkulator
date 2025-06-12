@@ -16,14 +16,14 @@ let dziel = document.getElementById("podziel");
 let rowne = document.getElementById("rownasie");
 
 let proc = document.getElementById("procent");
-let root = document.getElementById("root");
+let lnaw = document.getElementById("lnaw");
 let koma = document.getElementById("koma");
-let pi = document.getElementById("pi");
+let pnaw = document.getElementById("pnaw");
 
 let c = document.getElementById("wyczysc");
 let display = document.getElementById("display");
 
-let znaki = ["*", "/", "+", "%", "π", "√", "-"];
+let znaki = ["*", "/", "+", "%", "(", ")", "-"];
 let kropka = ".";
 
 j.addEventListener("click", function() {
@@ -97,7 +97,7 @@ plus.addEventListener("click", function() {
 rowne.addEventListener("click", function() {
     if (znaki.includes(display.value.charAt(display.value.length - 1))) {
         display.value = display.value.slice(0, -1);
-        display.value = eval(display.value);
+        display.value = eval(display.value); //Obliczanie i wyświetlanie wyniku
     } else {
         display.value = eval(display.value);
     }
