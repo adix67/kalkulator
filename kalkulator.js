@@ -23,48 +23,100 @@ let pnaw = document.getElementById("pnaw");
 let ce = document.getElementById("wyczysc");
 let display = document.getElementById("display");
 
-let znaki = ["*", "/", "+", "%", "(", ")", "-"];
+let znaki = ["*", "/", "+", "-"];
 let kropka = ".";
+let lnawias = "(";
+let pnawias = ")";
 
 j.addEventListener("click", function() {
-    display.value += 1;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "1"
+    } else {
+        display.value += 1;
+    }
 });
 
 d.addEventListener("click", function() {
-    display.value += 2;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "2"
+    } else {
+        display.value += 2;
+    };
 });
 
 t.addEventListener("click", function() {
-    display.value += 3;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "3"
+    } else {
+        display.value += 3;
+    }
 });
 
 cz.addEventListener("click", function() {
-    display.value += 4;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "4"
+    } else {
+        display.value += 4;
+    }
 });
 
 p.addEventListener("click", function() {
-    display.value += 5;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "5"
+    } else {
+        display.value += 5;
+    }
 });
 
 sz.addEventListener("click", function() {
-    display.value += 6;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "6"
+    } else {
+        display.value += 6;
+    }
 });
 
 si.addEventListener("click", function() {
-    display.value += 7;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "7"
+    } else {
+        display.value += 7;
+    }
 });
 
 o.addEventListener("click", function() {
-    display.value += 8;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "8"
+    } else {
+        display.value += 8;
+    }
 });
 
 dz.addEventListener("click", function() {
-    display.value += 9;
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "9"
+    } else {
+        display.value += 9;
+    }
 });
 
 z.addEventListener("click", function() {
     if (display.value != "0") {
-        display.value += 0;
+        if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+            display.value += "*";
+            display.value += "0"
+        } else {
+            display.value += 0;
+        }
     } else {
         display.value += "";
     }
@@ -73,7 +125,7 @@ z.addEventListener("click", function() {
 koma.addEventListener("click", function() {
     let niedodawac = display.value.split(new RegExp(`[${znaki.join("")}]`)); //Rozdzielenie (split) wyrażenia na części po operatorach
     let dlugosc = niedodawac[niedodawac.length - 1];
-    if (znaki.includes(display.value.charAt(display.value.length - 1))) {
+    if (znaki.includes(display.value.charAt(display.value.length - 1)) || lnawias.includes(display.value.charAt(display.value.length - 1)) || pnawias.includes(display.value.charAt(display.value.length - 1))) {
         display.value += "";
     } else if (display.value == "") {
         display.value += "";
@@ -87,7 +139,7 @@ koma.addEventListener("click", function() {
 plus.addEventListener("click", function() {
     if (display.value == "") {
         display.value += "";
-    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1))) { //Sprawdzenie czy ostatnim znakiem nie jest kropka lub jeden z operatorów i innych tego typu
+    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1)) || lnawias.includes(display.value.charAt(display.value.length - 1))) { 
         display.value += "";
     } else {
         display.value += "+";
@@ -95,21 +147,65 @@ plus.addEventListener("click", function() {
 });
 
 minus.addEventListener("click", function() {
-    if (display.value == "") {
-        display.value += "";
-    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1))) {
+    if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1))) { //Sprawdzenie czy ostatnim znakiem nie jest kropka lub jeden z operatorów i innych tego typu
         display.value += "";
     } else {
         display.value += "-";
     }
 });
 
-rowne.addEventListener("click", function() {
-    if (znaki.includes(display.value.charAt(display.value.length - 1))) {
-        display.value = display.value.slice(0, -1);
-        display.value = eval(display.value); //Obliczanie i wyświetlanie wyniku
+mnoz.addEventListener("click", function() {
+    if (display.value == "") {
+        display.value += "";
+    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1)) || lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "";
     } else {
-        display.value = eval(display.value);
+        display.value += "*";
+    }
+});
+
+dziel.addEventListener("click", function() {
+    if (display.value == "") {
+        display.value += "";
+    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1)) || lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "";
+    } else {
+        display.value += "/";
+    }
+});
+
+lnaw.addEventListener("click", function() {
+    if (display.value != "" && !znaki.includes(display.value.charAt(display.value.length - 1)) && !lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "*";
+        display.value += "(";
+    } else {
+        display.value += "(";
+    }
+});
+
+pnaw.addEventListener("click", function() {
+    let niedodawac = display.value.split(new RegExp(`[${znaki.join("")}]`)); //Rozdzielenie (split) wyrażenia na części po operatorach
+    let dlugosc = niedodawac[niedodawac.length - 1];
+    if (display.value == "") {
+        display.value += "";
+    } else if (znaki.includes(display.value.charAt(display.value.length - 1)) || kropka.includes(display.value.charAt(display.value.length - 1)) || lnawias.includes(display.value.charAt(display.value.length - 1))) {
+        display.value += "";
+    } else {
+        display.value += ")";
+    }
+});
+
+rowne.addEventListener("click", function() {
+    try {
+        if (znaki.includes(display.value.charAt(display.value.length - 1))) {
+            display.value = display.value.slice(0, -1);
+            display.value = eval(display.value); //Obliczanie i wyświetlanie wyniku
+        } else {
+            display.value = eval(display.value);
+        }
+    }
+    catch(err) {
+        alert(err.message);
     }
 });
 
